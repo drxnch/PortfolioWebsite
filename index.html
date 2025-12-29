@@ -9,8 +9,8 @@
     <div id="hero">
       <div id="container-hero">
         <div id="hero-text">
-          <h1>Hi, my name is Deven</h1>
-          <p>I need a job</p>
+          <h1>Hi. This is a website</h1>
+          <p>To display anything that I've done</p>
         </div>
         <div id="hero-image"></div>
       </div>
@@ -18,65 +18,76 @@
     <div>
       <h1 class="text-center">FPGA Projects</h1>
     </div>
-    <div class="container-rounded-16">Hi</div>
-    <button id="softwareProjectButton" onclick="showSoftwareProjects()">
-      Software
-    </button>
     <div class="flex-box">
       <div>
         <button id="softwareProjectButton" onclick="showSoftwareProjects()">
           Software
         </button>
       </div>
-      <div>Electronics</div>
       <div>
         <button id="firmwareProjectButton" onclick="showFirmwareProjects()">
-          Software
+          Firmware
+        </button>
+      </div>
+      <div>
+        <button id="hardwareProjectButton" onclick="showHardwareProjects()">
+          Hardware
+        </button>
+      </div>
+      <div>
+        <button id="fpgaProjectButton" onclick="showFpgaProjects()">
+          FPGA
         </button>
       </div>
     </div>
 
     <!-- Information of Projects-->
-    <div id="softwareProjects" class="container-rounded-16 flex-box hidden">
-      <div>Project 1</div>
-      <div>Project 2</div>
-      <div>Project 3</div>
+    <div id="softwareProjects" class="flex-box hidden">
+      <div class="container-rounded-16">Project 1</div>
+      <div class="container-rounded-16">Project 1</div>
+      <div class="container-rounded-16">Project 1</div>
     </div>
-    <div id="firmwareProjects" class="container-rounded-16 flex-box hidden">
-      <div>Project 1 df</div>
-      <div>Project 2d</div>
-      <div>Project 3d</div>
+
+    <div id="firmwareProjects" class="flex-box hidden">
+      <div class="container-rounded-16">Bare Metal Shell - ATMega328P</div>
+      <div class="container-rounded-16">Project 2d</div>
+      <div class="container-rounded-16">Project 3d</div>
     </div>
-    <div id="fpgaProjects" class="container-rounded-16 flex-box hidden">
-      <div>
-        <h2>FPGA Game Console</h2>
-        <p>
-          Talk about the Flappy Bird Project, the skills I gained and the level
-          at which I felt that I improved
-        </p>
+
+    <div id="hardwareProjects" class="flex-box hidden">
+      <div class="container-rounded-16">Electronic Piano</div>
+      <div class="container-rounded-16">Project 2d</div>
+      <div class="container-rounded-16">Project 3d</div>
+    </div>
+
+    <div id="fpgaProjects" class="flex-box hidden">
+      <div id="flappyBirdFpga" class="container-card">
+        <div>
+          <h2>FPGA Game Console</h2>
+        </div>
       </div>
-      <div>
+      <div class="container-card">
         <h2>Heterogenous Multiprocessor System on Chip (HMPSoC)</h2>
         <p>
           Talk about the Flappy Bird Project, the skills I gained and the level
           at which I felt that I improved
         </p>
       </div>
-      <div>
+      <div class="container-card">
         <h2>Trading Tracker</h2>
         <p>
           Talk about the Flappy Bird Project, the skills I gained and the level
           at which I felt that I improved
         </p>
       </div>
-      <div>
+      <div class="container-card">
         <h2>Some Linux Project</h2>
         <p>
           Learn about how Linux can be used in an FPGA to leverage something
           (too too sure)
         </p>
       </div>
-      <div>
+      <div class="container-card">
         <h2>Camera Based Tracking FPGA</h2>
         <p>
           Start thinking about how to connect camera, and then how to implement
@@ -84,5 +95,15 @@
         </p>
       </div>
     </div>
+
+    <dialog id="flappyBirdDialog">
+      <form method="dialog">
+        <p>
+          Talk about the Flappy Bird Project, the skills I gained and the level
+          at which I felt that I improved
+        </p>
+        <button>Close dialog</button>
+      </form>
+    </dialog>
   </body>
 </html>

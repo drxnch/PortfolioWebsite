@@ -4,11 +4,19 @@
   font-family: "JetBrains Mono", "Gill Sans", sans-serif;
 
   /* Base Colours (Shoutout Coolors) */
+  /* https://chir.ag/projects/name-that-color/#4F5146 - RGB to colour name*/
+
   --cream: hsl(29, 62%, 86%);
   --rose-quartz: hsl(278, 9%, 64%);
   --ultra-violet: hsl(237, 24%, 36%);
   --oxford-blue: hsl(230, 40%, 14%);
   --rich-black: hsl(244, 41%, 8%);
+
+  --citrine-white: hsl(39, 74%, 89%);
+  --brandy: hsl(35, 51%, 76%);
+  --bandicoot: hsl(52, 7%, 45%);
+  --fuscous-gray: hsl(71, 7%, 30%);
+  --armadillo: hsl(42, 12%, 21%);
 
   --hero-height: 90vh;
 }
@@ -22,8 +30,8 @@
 /* Dark mode colour preferences*/
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: var(--cream);
-    --background-color: var(--oxford-blue);
+    --text-color: var(--citrine-white);
+    --background-color: var(--armadillo);
   }
 }
 
@@ -35,8 +43,23 @@ body {
 
 button {
   font-family: "Jetbrains Mono", sans-serif;
-  background-color: aquamarine;
-  border-radius: 15px;
+  font-size: large;
+  font-weight: 700;
+  color: var(--armadillo);
+  background-color: var(--brandy);
+  border-radius: 12px;
+  transition: background-color 250ms ease;
+  padding: 1rem;
+}
+
+button:hover {
+  background-color: var(--citrine-white);
+}
+
+:modal {
+  background-color: beige;
+  border: 2px solid burlywood;
+  border-radius: 5px;
 }
 
 /*--- Classes ---*/
@@ -68,22 +91,24 @@ button {
   grid-auto-rows: minmax(100px, auto);
 }
 
-.container-rounded-16 {
-  background-color: rgb(247, 0, 255);
+.container-card {
+  background-color: var(--fuscous-gray);
   margin: 1.5rem;
   border-radius: 16px; /* rounded corners!!!*/
+  transition: background-color 250ms ease;
+}
+
+.container-card:hover {
+  background-color: var(--bandicoot);
 }
 
 .flex-box {
-  border: 2px dotted rgb(96 139 168);
   display: flex;
   justify-content: space-around;
 }
 
 .flex-box > * {
-  border: 2px solid rgb(96 139 168);
   border-radius: 5px;
-  background-color: rgb(96 139 168 / 0.2);
   padding: 1em;
 }
 
@@ -93,13 +118,13 @@ button {
 
 /*--- IDs ---*/
 #hero {
-  height: 90vh;
-  background-position: center;
+  height: 60vh;
   background-repeat: no-repeat;
 }
 
 #container-hero {
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "hero-text hero-image";
   align-items: center;
@@ -113,10 +138,10 @@ button {
 
 #hero-image {
   grid-area: hero-image;
-  background-image: url("media/images/myface.avif");
+  background-image: url("media/images/hero-image");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  min-height: var(--hero-height);
+  height: 100%;
 }
