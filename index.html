@@ -1,109 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
   <head>
     <link rel="stylesheet" href="style.css" />
     <script src="scripts/main.js" defer></script>
   </head>
+  <!-- Intro Section -->
   <body>
     <div id="hero">
-      <div id="container-hero">
-        <div id="hero-text">
-          <h1>Hi. This is a website</h1>
-          <p>To display anything that I've done</p>
+      <div id="hero-text">
+        <div class="top-div">
+          <h1 style="margin-left: 5rem; padding: 1rem">Hi. I'm Deven</h1>
         </div>
-        <div id="hero-image"></div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <h2>I am a <b style="color: var(--blue)">Computer Engineer.</b></h2>
+        <h2>
+          That means that I like to solve problems and think out of the box.
+        </h2>
+        <h2>
+          This is a place for you to view any work I've done.
+          <b style="color: var(--avery)">Enjoy!</b>
+        </h2>
       </div>
     </div>
-    <div>
-      <h1 class="text-center">FPGA Projects</h1>
+    <!-- Featured Projects Section -->
+    <div style="height:75vh;background-color: var(--rich-black);">
+      <h1 class="text-center" style="color:white; padding: 2rem 0px;"> Featured Projects / Work</h1>
     </div>
-    <div class="flex-box">
+    <!-- Project Section -->
+    <div class="projects-section" style="padding:1.5rem;">
       <div>
-        <button id="softwareProjectButton" onclick="showSoftwareProjects()">
+        <h1 class="text-center">All Projects</h1>
+      </div>
+      <div class="flex-box">
+        <button
+          id="softwareProjectButton"
+          style="background-color: var(--avery)"
+        >
           Software
         </button>
-      </div>
-      <div>
-        <button id="firmwareProjectButton" onclick="showFirmwareProjects()">
+        <button
+          id="firmwareProjectButton"
+          style="background-color: var(--mango)"
+        >
           Firmware
         </button>
-      </div>
-      <div>
-        <button id="hardwareProjectButton" onclick="showHardwareProjects()">
+        <button
+          id="hardwareProjectButton"
+          style="background-color: var(--tangerine)"
+        >
           Hardware
         </button>
-      </div>
-      <div>
-        <button id="fpgaProjectButton" onclick="showFpgaProjects()">
+        <button
+          id="fpgaProjectButton"
+          style="background-color: var(--tango-pink)"
+        >
           FPGA
         </button>
       </div>
+      <div id="portfolio-container"></div>
     </div>
-
-    <!-- Information of Projects-->
-    <div id="softwareProjects" class="flex-box hidden">
-      <div class="container-rounded-16">Project 1</div>
-      <div class="container-rounded-16">Project 1</div>
-      <div class="container-rounded-16">Project 1</div>
+    <!-- Beyond Work Section -->
+    <div class="beyond-work-section">
+      <h1>Beyond Work</h1>
+      <p>Outside of my line, I am a huge fan of sports!</p>
     </div>
-
-    <div id="firmwareProjects" class="flex-box hidden">
-      <div class="container-rounded-16">Bare Metal Shell - ATMega328P</div>
-      <div class="container-rounded-16">Project 2d</div>
-      <div class="container-rounded-16">Project 3d</div>
+    <!-- Query Section -->
+    <div id="query-message">
+      <h3>Any burning questions? Send a message through!</h3>
     </div>
-
-    <div id="hardwareProjects" class="flex-box hidden">
-      <div class="container-rounded-16">Electronic Piano</div>
-      <div class="container-rounded-16">Project 2d</div>
-      <div class="container-rounded-16">Project 3d</div>
+    <div
+      style="
+        display: flex;
+        width: 75%;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      "
+    >
+      <div id="query-info">
+        <input
+          type="text"
+          id="email"
+          name="name"
+          minlength="5"
+          maxlength="30"
+          placeholder="email@example.com"
+          required
+        /><br />
+        <input
+          type="text"
+          id="topic-of-discussion"
+          placeholder="Topic of Discussion"
+          required
+        />
+        <br />
+        <input type="text" id="email-content" placeholder="Email Content" />
+        <br />
+      </div>
+      <div id="query-send"><button id="send-button">Send</button></div>
     </div>
-
-    <div id="fpgaProjects" class="flex-box hidden">
-      <div id="flappyBirdFpga" class="container-card">
-        <div>
-          <h2>FPGA Game Console</h2>
-        </div>
-      </div>
-      <div class="container-card">
-        <h2>Heterogenous Multiprocessor System on Chip (HMPSoC)</h2>
-        <p>
-          Talk about the Flappy Bird Project, the skills I gained and the level
-          at which I felt that I improved
-        </p>
-      </div>
-      <div class="container-card">
-        <h2>Trading Tracker</h2>
-        <p>
-          Talk about the Flappy Bird Project, the skills I gained and the level
-          at which I felt that I improved
-        </p>
-      </div>
-      <div class="container-card">
-        <h2>Some Linux Project</h2>
-        <p>
-          Learn about how Linux can be used in an FPGA to leverage something
-          (too too sure)
-        </p>
-      </div>
-      <div class="container-card">
-        <h2>Camera Based Tracking FPGA</h2>
-        <p>
-          Start thinking about how to connect camera, and then how to implement
-          camera tracking for drawing
-        </p>
-      </div>
-    </div>
-
-    <dialog id="flappyBirdDialog">
-      <form method="dialog">
-        <p>
-          Talk about the Flappy Bird Project, the skills I gained and the level
-          at which I felt that I improved
-        </p>
-        <button>Close dialog</button>
-      </form>
-    </dialog>
+    <!-- Footer -->
+    <footer>Deven Ranchhod</footer>
   </body>
 </html>

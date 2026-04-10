@@ -1,44 +1,46 @@
-const softwareProjectButton = document.getElementById("softwareProjectButton");
-const firmwareProjectButton = document.getElementById("firmwareProjectButton");
-const hardwareProjectButton = document.getElementById("hardwareProjectButton");
-const fpgaProjectButton = document.getElementById("fpgaProjectButton");
+// 1. Select the main container once
+const container = document.getElementById('portfolio-container');
+let allProjects = []; 
 
-const softwareProjects = document.getElementById("softwareProjects");
-const firmwareProjects = document.getElementById("firmwareProjects");
-const hardwareProjects = document.getElementById("hardwareProjects");
-const fpgaProjects = document.getElementById("fpgaProjects");
-
-const flappyBirdFpga = document.getElementById("flappyBirdFpga");
-function showSoftwareProjects() {
-  softwareProjects.classList.remove("hidden");
-  firmwareProjects.classList.add("hidden");
-  hardwareProjects.classList.add("hidden");
-  fpgaProjects.classList.add("hidden");
+// 2. Load data and show everything to start
+async function init() {
+    try {
+        const response = await fetch('./projects.json');
+        allProjects = await response.json();
+        renderProjects('all'); // Initialize showing all
+    } catch (error) {
+        console.error('Error loading JSON:', error);
+    }
 }
 
-function showFirmwareProjects() {
-  softwareProjects.classList.add("hidden");
-  firmwareProjects.classList.remove("hidden");
-  hardwareProjects.classList.add("hidden");
-  fpgaProjects.classList.add("hidden");
+// 3. The "Workhorse" function
+function renderProjects(filterTag) {
+    // Clear the container first
+    container.innerHTML = "";
+
+    // Filter the data based on the tag passed to the function
+    const filtered = filterTag === 'all' 
+        ? allProjects 
+        : allProjects.filter(p => p.tag.includes(filterTag));
+
+    // Build the HTML cards
+    filtered.forEach(project => {
+        container.innerHTML += `
+            <div class="card">
+              <div class="card-text">
+                <h3>${project.title}</h3>
+              </div>
+            </div>
+        `;
+    });
 }
 
-function showHardwareProjects() {
-  softwareProjects.classList.add("hidden");
-  firmwareProjects.classList.add("hidden");
-  hardwareProjects.classList.remove("hidden");
-  fpgaProjects.classList.add("hidden");
-}
 
-function showFpgaProjects() {
-  softwareProjects.classList.add("hidden");
-  firmwareProjects.classList.add("hidden");
-  hardwareProjects.classList.add("hidden");
-  fpgaProjects.classList.remove("hidden");
-}
 
-const flappyBirdDialog = document.getElementById("flappyBirdDialog");
+// 4. Event Listeners
+document.getElementById("softwareProjectButton").addEventListener("click", () => renderProjects("Software"));
+document.getElementById("firmwareProjectButton").addEventListener("click", () => renderProjects("Firmware"));
+document.getElementById("hardwareProjectButton").addEventListener("click", () => renderProjects("Hardware"));
+document.getElementById("fpgaProjectButton").addEventListener("click", () => renderProjects("FPGA"));
 
-flappyBirdFpga.addEventListener("click", () => {
-  flappyBirdDialog.showModal();
-});
+init();
