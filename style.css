@@ -1,7 +1,33 @@
 /*---Defaults ---*/
+
+/* Regular */
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('fonts/apple_garamond/AppleGaramond-Light.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('fonts/apple_garamond/AppleGaramond-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Italic */
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('fonts/apple_garamond/AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+
 :root {
   /* Font Family */
-  font-family: "JetBrains Mono", "Gill Sans", sans-serif;
+  
 
   /* Base Colours (Shoutout Coolors) */
   /* https://chir.ag/projects/name-that-color/#4F5146 - RGB to colour name*/
@@ -9,25 +35,16 @@
   /* Texture */
   /* https://grainy-gradients.vercel.app */
 
-  --cream: hsl(29, 62%, 86%);
-  --rose-quartz: hsl(278, 9%, 64%);
-  --ultra-violet: hsl(237, 24%, 36%);
-  --oxford-blue: hsl(230, 40%, 14%);
-  --rich-black: hsl(244, 41%, 8%);
-
-  --citrine-white: hsl(39, 74%, 89%);
-  --brandy: hsl(35, 51%, 76%);
-  --bandicoot: hsl(52, 7%, 45%);
-  --fuscous-gray: hsl(71, 7%, 30%);
-  --armadillo: hsl(42, 12%, 21%);
-
-  --avery:#8FBB76;
-  --mango: #FCC76A;
-  --tangerine: #F4A755;
-  --tango-pink: #E06C79;
-  --violet-xona: #8A5F9E;
-  --blue: #519FB0;
+  --avery:hsl(98, 34%, 60%);
+  --mango: hsl(38, 96%, 70%);
+  --tangerine: hsl(31, 88%, 65%);
+  --tango-pink: hsl(353, 65%, 65%);
+  --violet-xona: hsl(281, 25%, 50%);
+  --blue: hsl(191, 38%, 50%);
   --white: hsl(0, 0%, 100%);
+  --light-grey: hsl(0, 0%, 80%);
+  --dark-grey: hsl(0,0%,20%);
+  --grey:hsl(0,0%,50%);
 
   --hero-height: 90vh;
 }
@@ -36,6 +53,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Apple Garamond', sans-serif;
+  font-weight: lighter;
 }
 
 /* Light Mode */
@@ -44,22 +63,27 @@
   --background-color: var(--white);
 }
 
-/* Dark mode colour preferences*/
-@media (prefers-color-scheme: dark) {
+/* Dark mode colour preferences - TODO later*/
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text-color: var(--white);
     --background-color: var(--rich-black);
   }
-}
+} */
 
 /*--- Elements ---*/
 h1 {
   color: var(#fff);
   font-size: 56px;
+  
 }
 
 h2 {
   color: var(--rich-black);
+}
+
+h3 {
+  text-align: center;
 }
 
 body {
@@ -84,12 +108,20 @@ button:hover {
   border: 2px solid burlywood;
 }
 
+input {
+  background-color: hsl();
+}
+
 /*--- Classes ---*/
 
 .top-div{
+  display:flex;
+  flex: 1; /* Takes up 1 unit of space */
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--blue); 
+  align-items: center;
+  justify-content: center;
 }
 
 .text-center {
@@ -127,9 +159,9 @@ button:hover {
 }
 
 .card {
-  width: 200px;        /* 'size' isn't a valid CSS property; use width/height */
+  width: 200px;
   height: 200px;
-  background-image: url("media/images/myface.avif");
+  background-image: url("media/images/hero-image.jpg");
   background-size: cover;
   position: relative;  /* Keeps the child text contained inside */
   cursor: pointer;
@@ -143,13 +175,10 @@ button:hover {
   height: 100%;
   color: white;
   background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
-  
-  /* Centering the text */
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* Hide by default using opacity for better transition support */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -157,6 +186,8 @@ button:hover {
 /* When the CARD is hovered, change the TEXT */
 .card:hover .card-text {
   opacity: 1;
+  border-radius: 5px;
+  border-color: #8FBB76;
 }
 
 .flex-box {
@@ -195,6 +226,10 @@ button:hover {
   height:100vh;
 }
 
+.bottom-section {
+  flex: 5; /* Takes up 2 units of space (making it 66% of the total) */
+}
+
 /*--- IDs ---*/
 #hero {
   height: 100vh;
@@ -222,15 +257,18 @@ button:hover {
 }
 
 #hero-text {
-  position: left;
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
   height: 100%;
   max-width: 50%;
   text-align: left;
   color: var(--white);
+  /* Ensure it stays on the left */
+  float: left; 
 }
 
 #portfolio-container {
-    padding: 1em;
+  padding: 1em;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, auto));
   max-height: 75vh;
@@ -238,6 +276,17 @@ button:hover {
   overflow-y: auto;        /* Show scrollbar only when content is too long */
   scrollbar-width: thin;
   scrollbar-color: #007bff #1a1a1a;
+}
+
+#featured-projects-container {
+  padding: 1em;
+  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  max-height: 75vh;
+  flex:1;
+  overflow-y: auto;        /* Show scrollbar only when content is too long */
+  justify-content: center;
+
 }
 
 #container-query {

@@ -1,0 +1,23 @@
+[ 
+ {
+    "title": "STM32 MP3 Player",
+    "year": "2026",
+    "description": "Multiple Protocols UART, SPI, GPIO, I2S, Display. Music Player, Timer, Alarm clock in USB sized device. Unit Testing and CI using GitHub Actions.",
+    "tech": ["UART", "SPI", "GPIO", "I2S", "GitHub Actions"],
+    "tag": ["Firmware", "STM32"]
+  },
+    {
+    "title": "MPAi Web App",
+    "year": "2025",
+    "description": "Created a modern, interactive frontend using Vue.js and vanilla JS/CSS. Integrated a database of over 1,000 Steam games with dynamic data rendering. Collaborated on frontend/backend architecture and API connections.",
+    "tech": ["Vue.js", "JavaScript", "CSS", "API"],
+    "tag": ["Software", "Web Development"]
+    },
+    {
+    "title": "EVolocity Energy Resource Monitor",
+    "year": "2025",
+    "description": "Developed a device to monitor voltage, current, and power from a standard power outlet. Displayed on a website using API integration, with offline support. Simulated analog circuitry in LTSpice and built a custom PCB.",
+    "tech": ["LTSpice", "PCB Design", "Firmware", "API"],
+    "tag": ["Electronics", "Hardware"]
+  }
+]
