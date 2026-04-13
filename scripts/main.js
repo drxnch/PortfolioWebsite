@@ -70,11 +70,18 @@ function renderFeaturedProjects() {
 }
 
 
-
 // 4. Event Listeners
 document.getElementById("softwareProjectButton").addEventListener("click", () => renderProjects("Software"));
 document.getElementById("firmwareProjectButton").addEventListener("click", () => renderProjects("Firmware"));
 document.getElementById("hardwareProjectButton").addEventListener("click", () => renderProjects("Hardware"));
 document.getElementById("fpgaProjectButton").addEventListener("click", () => renderProjects("FPGA"));
+
+document.querySelector(".menu-btn").addEventListener("click", () => {
+  document.getElementById("menu-background").classList.toggle("hidden");
+});
+
+document.querySelector("#1").addEventListener("click", () => {
+  document.getElementsByClassName(".flex-container").scrollIntoView({ behavior: "smooth" });
+});
 
 init();

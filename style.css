@@ -97,6 +97,7 @@ b {
 
 .flex-container {
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -169,12 +170,78 @@ b {
 }
 
 /*--- Featured Projects ---*/
-featured-section {
+#featured-section-container {
   height:75vh;
-  background-color: var(--dark-grey);
+  background-color: var(--dark-grey)
 }
 
+/* All Projects */
+#all-projects-container {
+  height:100vh;
+  background-color: var(--white);
+}
 
+#portfolio-container {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  max-height: 75vh;
+  flex:1;
+  overflow-y: auto;        /* Show scrollbar only when content is too long */
+  scrollbar-width: thin;
+  scrollbar-color: #636363 #1a1a1a;
+}
+/* Beyond Work */
+#beyond-work-container {
+  height: 100vh;
+  background-color: var(--white);
+}
+
+/* Queries */
+
+
+/* Menu */
+.menu-btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--blue);
+  border: none;
+  cursor: pointer;
+}
+
+#menu-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
+  height: 100vh;
+  width:100%;
+  z-index: 99;
+  display: flex;
+}
+
+#menu-background.hidden {
+  display: none;
+}
+
+#menu-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: end;  /* pushes items to the right */
+  justify-content: center;
+  height: 100%;
+}
+
+menu-button
+
+/* UI Elements */
 button {
   font-size: large;
   font-weight: 700;
@@ -195,10 +262,6 @@ button:hover {
 input {
   background-color: hsl();
 }
-
-/*--- Classes ---*/
-
-
 
 .text-center {
   text-align: center;
@@ -304,30 +367,6 @@ input {
 
 .bottom-section {
   flex: 5; /* Takes up 2 units of space (making it 66% of the total) */
-}
-
-/*--- IDs ---*/
-
-#portfolio-container {
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-  max-height: 75vh;
-  flex:1;
-  overflow-y: auto;        /* Show scrollbar only when content is too long */
-  scrollbar-width: thin;
-  scrollbar-color: #007bff #1a1a1a;
-}
-
-#featured-projects-container {
-  padding: 1em;
-  display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-  max-height: 75vh;
-  flex:1;
-  overflow-y: auto;        /* Show scrollbar only when content is too long */
-  justify-content: center;
-
 }
 
 #container-query {
