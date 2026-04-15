@@ -11,9 +11,11 @@
   box-sizing: border-box;
   font-family: 'Apple Garamond', sans-serif;
   font-weight: normal;
+  box-sizing: border-box;
 }
 
-/*---Defaults ---*/
+/*---Defaults 
+ ----------------------------------------------------- */
 
 @font-face {
   font-family: 'Apple Garamond';
@@ -50,6 +52,7 @@
   --light-grey: hsl(0, 0%, 80%);
   --dark-grey: hsl(0,0%,20%);
   --grey:hsl(0,0%,50%);
+  --black:hsl(0,0%,10%);
 
   --h1: clamp(1.8rem, 5vw, 4rem);  
 
@@ -57,7 +60,7 @@
 
 /* Light Mode */
 :root {
-  --text-color: var(--rich-black);
+  --text-color: var(--black);
   --background-color: var(--white);
 }
 
@@ -69,7 +72,9 @@
   }
 } */
 
-/*--- Elements ---*/
+/* Elements
+ ----------------------------------------------------- */
+
 h1 {
   font-size: clamp(1.8rem, 5vw, 4rem);  
 }
@@ -89,13 +94,18 @@ p {
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 b {
   font-weight: 700;
 }
 
-.flex-container {
+/* Hero Section
+----------------------------------------------------- */
+
+#hero {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -103,22 +113,14 @@ b {
   align-items: stretch;
 }
 
-
-/* --- Hero Section --- */
-
-#hero {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
 #hero-top {
   height:45%;
 }
 
 #hero-bottom {
-  height:50%;
+  height: 50%;
   margin-left: 1rem;
+  width: calc(100% - 1rem); /* Subtract the margin from the width */
 }
 
 #hero-footer {
@@ -139,6 +141,7 @@ b {
   color: var(--white);
   font-weight:bold;
   font-size: var(--h1);
+  margin-top:2.5rem;
 }
 
 /* This creates the image layer */
@@ -169,38 +172,116 @@ b {
   float: left; 
 }
 
-/*--- Featured Projects ---*/
-#featured-section-container {
+/* Featured Projects
+ ----------------------------------------------------- */
+ 
+#featured-projects-container {
   height:75vh;
-  background-color: var(--dark-grey)
+  background-color: var(--dark-grey);
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
 }
+#featured-projects-container > div {
+  flex-shrink: 0;}
 
-/* All Projects */
+/* All Projects
+ ----------------------------------------------------- */
 #all-projects-container {
   height:100vh;
   background-color: var(--white);
 }
 
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.flex-box button {
+  /* Styling */
+  font-size: large;
+  font-weight: 500;
+  padding: 1rem;       
+  border: none;        
+  cursor: pointer;
+  width: auto;
+}
+
 #portfolio-container {
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-  max-height: 75vh;
-  flex:1;
-  overflow-y: auto;        /* Show scrollbar only when content is too long */
-  scrollbar-width: thin;
-  scrollbar-color: #636363 #1a1a1a;
+  height:75vh;
+  background-color: var(--dark-grey);
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
 }
-/* Beyond Work */
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-slot {
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: var(--white);
+    min-width: 250px;
+}
+
+.card-slot.center {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+    z-index: 2;
+}
+
+.card-slot.side {
+    transform: scale(0.85);
+    filter: blur(3px);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.carousel-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white);
+    z-index: 3;
+}
+/* Beyond Work
+ ----------------------------------------------------- */
 #beyond-work-container {
-  height: 100vh;
-  background-color: var(--white);
+  padding-top: 4rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
 }
 
-/* Queries */
+/* Queries
+ ----------------------------------------------------- */
 
 
-/* Menu */
+/* Menu
+ ----------------------------------------------------- */
 .menu-btn {
   position: fixed;
   bottom: 2rem;
@@ -239,7 +320,36 @@ b {
   height: 100%;
 }
 
-menu-button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* UI Elements */
 button {
@@ -306,50 +416,11 @@ input {
   cursor: pointer;
 }
 
-.card-text {
-  position: absolute;  /* Sits on top of the background */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: white;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 /* When the CARD is hovered, change the TEXT */
 .card:hover .card-text {
   opacity: 1;
   border-radius: 5px;
   border-color: #8FBB76;
-}
-
-.flex-box {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.flex-box button {
-  flex: 1; 
-  
-  /* Styling */
-  font-family: "JetBrains Mono", sans-serif;
-  font-size: large;
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 1rem;       
-  border: none;        
-  cursor: pointer;
-}
-
-.flex-box div {
-  flex:1;
 }
 
 .hidden {

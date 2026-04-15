@@ -4,83 +4,95 @@
     "year": "2025",
     "description": "Created a custom instruction set in Assembly, deployed on DE1-SoC Board using Quartus. Integrated memory, ALU, and control logic using VHDL, with C-based test programs. Validated CPU functionality using simulation and on-board debugging.",
     "tech": ["Assembly", "Quartus", "VHDL", "C"],
-    "tag": ["FPGA", "Hardware"]
+    "tag": ["FPGA", "Hardware"],
+    "id": "1"
   },
   {
     "title": "FPGA Pacemaker",
     "year": "2024",
     "description": "Implemented a timing-critical dual-chamber pacemaker model using SCCharts. Developed ISR-driven logic in C for simulating atrial and ventricular events. Verified timing constraints and pacing through hardware simulation.",
     "tech": ["SCCharts", "C"],
-    "tag": ["FPGA", "Embedded"]
+    "tag": ["FPGA", "Embedded"],
+    "id": "2"
   },
   {
     "title": "FPGA Game Console",
     "year": "2024",
     "description": "Created a fully functional 'Flappy Bird' clone in VHDL on a DEO-CV FPGA board. Designed game logic, video output, and user input at hardware level. Achieved real-time gameplay with synced VGA display and collision mechanics.",
     "tech": ["VHDL", "VGA"],
-    "tag": ["FPGA", "Hardware", "Gaming"]
+    "tag": ["FPGA", "Hardware", "Gaming"],
+    "id": "3"
   },
   {
     "title": "STM32 MP3 Player",
     "year": "2026",
     "description": "Multiple Protocols UART, SPI, GPIO, I2S, Display. Music Player, Timer, Alarm clock in USB sized device. Unit Testing and CI using GitHub Actions.",
     "tech": ["UART", "SPI", "GPIO", "I2S", "GitHub Actions"],
-    "tag": ["Firmware", "STM32"]
+    "tag": ["Firmware", "STM32"],
+        "id": "4"
   },
   {
     "title": "ATMega328P Shell",
     "year": "2026",
     "description": "Fully functional shell made for reduce reflashing times & testing. Shell parser Usable on terminal. Created using Bare Metal C. UART, SPI, GPIO, PWM support.",
     "tech": ["Bare Metal C", "UART", "SPI", "GPIO", "PWM"],
-    "tag": ["Firmware", "Embedded"]
+    "tag": ["Firmware", "Embedded"],
+      "id": "5"
   },
   {
     "title": "Line-Following Robot",
     "year": "2024",
     "description": "Designed and manufactured a PCB for motor and sensor integration. Programmed line-following control logic in embedded C for autonomous behaviour. Tuned motor performance across various track surfaces using real-world tests.",
     "tech": ["Embedded C", "PCB Design"],
-    "tag": ["Electronics", "Hardware", "Robotics"]
+    "tag": ["Electronics", "Hardware", "Robotics"],
+    "id": "6"
   },
   {
     "title": "ASL Recognition AI",
     "year": "2024",
     "description": "Developed an ASL alphabet recognition app with 95% model accuracy in 30 epochs. Built a PyQt5 GUI connected to three backend ML models including a custom CNN. Collaborated in a team of 3 to deliver the application.",
     "tech": ["Python", "PyQt5", "CNN", "Machine Learning"],
-    "tag": ["Software", "AI"]
+    "tag": ["Software", "AI"],
+    "id": "7"
   },
   {
     "title": "MPAi Web App",
     "year": "2025",
     "description": "Created a modern, interactive frontend using Vue.js and vanilla JS/CSS. Integrated a database of over 1,000 Steam games with dynamic data rendering. Collaborated on frontend/backend architecture and API connections.",
     "tech": ["Vue.js", "JavaScript", "CSS", "API"],
-    "tag": ["Software", "Web Development"]
+    "tag": ["Software", "Web Development"],
+    "id": "8"
   },
   {
     "title": "Super Saturated Steam App",
     "year": "2024",
     "description": "Designed and built an Android app using JavaScript and XML in Android Studio. Implemented interactive features for steam property calculations and education. Delivered within an 8-week project timeframe.",
     "tech": ["JavaScript", "XML", "Android Studio"],
-    "tag": ["Software", "Mobile"]
+    "tag": ["Software", "Mobile"],
+    "id": "9"
   },
   {
     "title": "EVolocity Energy Resource Monitor",
     "year": "2025",
     "description": "Developed a device to monitor voltage, current, and power from a standard power outlet. Displayed on a website using API integration, with offline support. Simulated analog circuitry in LTSpice and built a custom PCB.",
     "tech": ["LTSpice", "PCB Design", "Firmware", "API"],
-    "tag": ["Electronics", "Hardware"]
+    "tag": ["Electronics", "Hardware"],
+    "id": "10"
   },
   {
     "title": "Morra (Terminal App)",
     "year": "2023",
     "description": "Core OOP principles applied: Inheritance, Polymorphism, Encapsulation. Solo university project focusing on terminal-based interaction.",
     "tech": ["OOP"],
-    "tag": ["Software", "Academic"]
+    "tag": ["Software", "Academic"],
+    "id": "11"
   },
   {
     "title": "Simulated Insurance System (Terminal App)",
     "year": "2023",
     "description": "Core OOP principles applied: Inheritance, Polymorphism, Encapsulation. Solo university project.",
     "tech": ["OOP"],
-    "tag": ["Software", "Academic"]
+    "tag": ["Software", "Academic"],
+    "id": "12"
   }
 ]
