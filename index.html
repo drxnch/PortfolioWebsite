@@ -2,36 +2,25 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" />
-    <script src="scripts/main.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+
     <!-- Hero Section -->
-    <div id="hero">
-      <div id="hero-top">
-        <div id="hero-title">Hi I'm Deven</div>
-      </div>
-      <div id="hero-bottom">
-        <h1>I am a <b style="color: var(--blue)">Computer Engineer.</b></h1> <br/>
-        <h2>
-          That means that I like to solve problems and think outside of the box.
-        </h2> <br />
-        <h2>
-            This is a place for you to view any work I've done. <br />
-            <b style="color: var(--avery)">Enjoy!</b>
-        </h2>
-      </div>
-      <div id="hero-footer">Find out more below</div>
-    </div>
+    <div id="hero-section" style="height:100vh;width: 100%;"></div>
+
+
     <!-- Featured Growth Section -->
-    <div style="background-color: var(--dark-grey);">
+    <div id="featured-projects-section" style="background-color: var(--dark-grey);">
       <h1 class="text-center" style="color:white; padding: 2rem 0px;"> Featured Growths / Mindsets</h1>
       <div id="featured-section-container">
         <div id="featured-projects-container"></div>
       </div>
     </div>
+
+
     <!-- All Projects Section -->
-    <div class="projects-section">
+    <div id="all-projects-section" class="projects-section">
       <div>
         <h1 class="text-center" style="padding:1.5rem;">All Projects</h1>
       </div>
@@ -63,26 +52,32 @@
       </div>
       <div id="portfolio-container"></div>
     </div>
+
+
     <!-- Beyond Work Section -->
     <div id="beyond-work" style="height:100vh;">
       <h1 style="text-align: center;">Beyond Work</h1>
       <div id="beyond-work-container"></div>
     </div>
+
+
     <!-- Queries Section -->
+
+    
     <!-- Footer -->
 
     <!-- Menu -->
     <button class="menu-btn"></button>
     <div id="menu-background" class="hidden">
       <div id="menu-container">
-        <h1 id="1" style="cursor: pointer;">Intro</h1>
-        <h1 id="2"style="cursor: pointer;">Featured</h1>
-        <h1 id="3" style="cursor: pointer;">All Projects</h1>
-        <h1 id="4" style="cursor: pointer;">Beyond Work</h1>
-        <h1 id="5" style="cursor: pointer;">Contact Me</h1>
+        <a href="#hero-section"><h1 id="1" style="cursor: pointer;">Intro</h1></a>
+        <a href="#featured-projects-section"><h1 id="2"style="cursor: pointer;">Featured</h1></a>
+        <a href="#all-projects-section"><h1 id="3" style="cursor: pointer;">All Projects</h1></a>
+        <a href="#beyond-work"><h1 id="4" style="cursor: pointer;">Beyond Work</h1></a>
+        <a href="#hero-section"><h1 id="5" style="cursor: pointer;">Contact Me</h1></a>
       </div>
     </div>
 
-    
+    <script src="scripts/main.js" defer></script>
   </body>
 </html>

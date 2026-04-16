@@ -40,9 +40,9 @@
 }
 
 
-:root {  
+:root {
   /* Colours */
-  --avery:hsl(98, 34%, 60%);
+  --avery: hsl(98, 34%, 60%);
   --mango: hsl(38, 96%, 70%);
   --tangerine: hsl(31, 88%, 65%);
   --tango-pink: hsl(353, 65%, 65%);
@@ -50,12 +50,9 @@
   --blue: hsl(191, 38%, 50%);
   --white: hsl(0, 0%, 100%);
   --light-grey: hsl(0, 0%, 80%);
-  --dark-grey: hsl(0,0%,20%);
-  --grey:hsl(0,0%,50%);
-  --black:hsl(0,0%,10%);
-
-  --h1: clamp(1.8rem, 5vw, 4rem);  
-
+  --dark-grey: hsl(0, 0%, 20%);
+  --grey: hsl(0, 0%, 50%);
+  --black: hsl(0, 0%, 10%);
 }
 
 /* Light Mode */
@@ -75,10 +72,6 @@
 /* Elements
  ----------------------------------------------------- */
 
-h1 {
-  font-size: clamp(1.8rem, 5vw, 4rem);  
-}
-
 h2 {
   font-size: clamp(1.5rem, 5vw, 3rem);
 }
@@ -88,7 +81,7 @@ h3 {
 }
 
 p {
-    font-size: clamp(1rem, 5vw, 2rem);
+  font-size: clamp(1rem, 5vw, 2rem);
 }
 
 body {
@@ -105,221 +98,425 @@ b {
 /* Hero Section
 ----------------------------------------------------- */
 
-#hero {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
+@media (min-width: 400px) {
+  /* Mobile */
 
-#hero-top {
-  height:45%;
-}
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 4rem);
+  }
 
-#hero-bottom {
-  height: 50%;
-  margin-left: 1rem;
-  width: calc(100% - 1rem); /* Subtract the margin from the width */
-}
+  #hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-#hero-footer {
-  height: 5%;
-  text-align: center;
-}
+  #hero-title {
+    padding: clamp(0.1rem, 5vw, 1rem);
+    width: 60%;
+    display: flex;
+    flex: 1;
+    /* Takes up 1 unit of space */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--blue);
+    align-items: center;
+    justify-content: center;
+    /* Will probably change*/
+    color: var(--white);
+    font-weight: bold;
+    margin-top: 2.5rem;
+  }
 
-#hero-title {
-  padding: clamp(0.1rem, 5vw, 0.5rem);
-  width:85%;
-  display:flex;
-  flex: 1; /* Takes up 1 unit of space */
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: var(--blue); 
-  align-items: center;
-  justify-content: center; /* Will probably change*/
-  color: var(--white);
-  font-weight:bold;
-  font-size: var(--h1);
-  margin-top:2.5rem;
-}
+  #hero-top {
+    height: 45%;
+  }
 
-/* This creates the image layer */
-#hero-top::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  z-index: -1; /* Pushes the image behind the text */
-  
-  background-image: url("media/images/hero-image.jpg");
-  background-size: 300%;
-  background-position: 82% 85%;
-  /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
-  /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
-}
-
-#hero-text {
-  display: flex;
-  flex-direction: column; /* Stacks children vertically */
-  height: 100%;
-  max-width: 50%;
-  text-align: left;
-  color: var(--white);
-  /* Ensure it stays on the left */
-  float: left; 
-}
-
-/* Featured Projects
+  /* Featured Projects
  ----------------------------------------------------- */
- 
-#featured-projects-container {
-  height:75vh;
-  background-color: var(--dark-grey);
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-}
-#featured-projects-container > div {
-  flex-shrink: 0;}
 
-/* All Projects
+  #featured-projects-container {
+    height: 75vh;
+    background-color: var(--dark-grey);
+    justify-content: center;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  #featured-projects-container>div {
+    flex-shrink: 0;
+  }
+
+  /* All Projects
  ----------------------------------------------------- */
-#all-projects-container {
-  height:100vh;
-  background-color: var(--white);
-}
+  #all-projects-container {
+    height: 100vh;
+    background-color: var(--white);
+  }
 
-.flex-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+  .flex-box {
+    display: flex;
+    flex-direction: row;
+  }
 
-.flex-box button {
-  /* Styling */
-  font-size: large;
-  font-weight: 500;
-  padding: 1rem;       
-  border: none;        
-  cursor: pointer;
-  width: auto;
-}
+  .flex-box button {
+    /* Styling */
+    flex: 1;
+    font-size: large;
+    font-weight: 500;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
 
-#portfolio-container {
-  height:75vh;
-  background-color: var(--dark-grey);
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-}
+  #portfolio-container {
+    height: 75vh;
+    background-color: var(--dark-grey);
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+  }
 
-.carousel-wrapper {
+  .carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     overflow: hidden;
     padding: 2rem 0;
-}
+  }
 
-.carousel-track {
+  .carousel-track {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
+  }
 
-.card-slot {
+  .card-slot {
     transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
     border-radius: 8px;
     padding: 1rem;
     background-color: var(--white);
     min-width: 250px;
-}
+  }
 
-.card-slot.center {
+  .card-slot.center {
     transform: scale(1);
     filter: blur(0px);
     opacity: 1;
     z-index: 2;
-}
+  }
 
-.card-slot.side {
+  .card-slot.side {
     transform: scale(0.85);
     filter: blur(3px);
     opacity: 0.6;
     z-index: 1;
-}
+  }
 
-.carousel-btn {
+  .carousel-btn {
     background: none;
     border: none;
     font-size: 2rem;
     cursor: pointer;
     color: var(--white);
     z-index: 3;
-}
-/* Beyond Work
+  }
+
+  /* Beyond Work
  ----------------------------------------------------- */
-#beyond-work-container {
-  padding-top: 4rem;
-  justify-content: center;
-  flex-wrap: nowrap;
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-}
+  #beyond-work-container {
+    padding-top: 4rem;
+    justify-content: center;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+  }
 
-/* Queries
+  /* Queries
  ----------------------------------------------------- */
 
 
-/* Menu
+  /* Menu
  ----------------------------------------------------- */
-.menu-btn {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: var(--blue);
-  border: none;
-  cursor: pointer;
+  .menu-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--black);
+    border: none;
+    cursor: pointer;
+  }
+
+  #menu-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+    height: 100vh;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+  }
+
+  #menu-background.hidden {
+    display: none;
+  }
+
+  #menu-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: end;
+    /* pushes items to the right */
+    justify-content: center;
+    height: 100%;
+  }
+
+  #hero-bottom {
+    height: 50%;
+    margin-left: 1rem;
+    width: calc(100% - 1rem);
+    /* Subtract the margin from the width */
+  }
+
+  #hero-footer {
+    height: 5%;
+    text-align: center;
+  }
+
+  /* This creates the image layer */
+  #hero-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: -1;
+    /* Pushes the image behind the text */
+
+    background-image: url("media/images/hero-image.jpg");
+    background-size: 300%;
+    background-position: 82% 85%;
+    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
+    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
+  }
+
+  #hero-text {
+    display: flex;
+    flex-direction: column;
+    /* Stacks children vertically */
+    height: 100%;
+    max-width: 50%;
+    text-align: left;
+    color: var(--white);
+    /* Ensure it stays on the left */
+    float: left;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    z-index: -1;
+    /* Keep it behind everything */
+    top: 0;
+    right: 0;
+    /* Anchor to the right */
+    width: 100%;
+    /* Cover the container */
+    height: 100%;
+    background-image: url('/media/images/hero-image.jpg');
+    background-size: cover;
+    background-position: 82% 85%;
+
+    /* This creates a fade effect from left (transparent) to right (visible) */
+    /* This ensures the image doesn't muddy the text on the left */
+    mask-image: linear-gradient(to right, transparent 50%, black 50%);
+    -webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
+  }
+
+  .hero-content {
+    z-index: 1;
+    /* Ensure text is above the image */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* Distributes your text blocks */
+    max-width: 100%;
+    /* Keeps text from stretching into the image too far */
+  }
+
+  .top-div h1 {
+    background-color: var(--blue);
+    color: white;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 0 10px 10px 0;
+  }
 }
 
-#menu-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
-  height: 100vh;
-  width:100%;
-  z-index: 99;
-  display: flex;
-}
+@media (min-width: 1024px) {
+  /* Desktop */
 
-#menu-background.hidden {
-  display: none;
-}
+  h1 {
+    font-size: clamp(3rem, 5vw, 6rem);
+  }
 
-#menu-container {
-  display: flex;
-  flex-direction: column;
-  width:100%;
-  align-items: end;  /* pushes items to the right */
-  justify-content: center;
-  height: 100%;
-}
 
+  /* Hero Section - Desktop*/
+  #hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #hero-title {
+    padding: clamp(1rem, 5vw, 5rem);
+    width: 55%;
+    display: flex;
+    flex: 1;
+    font-size: clamp(3rem, 5vw, 6rem);
+    /* Takes up 1 unit of space */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--blue);
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 5.5rem;
+  }
+
+  #hero-top {
+    height: 45%;
+  }
+
+  #hero-bottom {
+    height: 50%;
+    margin-left: 1rem;
+    width: calc(100% - 1rem);
+    /* Subtract the margin from the width */
+  }
+
+  #hero-footer {
+    height: 5%;
+    text-align: center;
+  }
+
+  /* This creates the image layer */
+  #hero-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: -1;
+    /* Pushes the image behind the text */
+
+    background-image: url("media/images/hero-image.jpg");
+    background-size: 300%;
+    background-position: 82% 85%;
+    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
+    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
+  }
+
+  #hero-text {
+    display: flex;
+    flex-direction: column;
+    /* Stacks children vertically */
+    height: 100%;
+    max-width: 50%;
+    text-align: left;
+    color: var(--white);
+    /* Ensure it stays on the left */
+    float: left;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    z-index: -1;
+    /* Keep it behind everything */
+    top: 0;
+    right: 0;
+    /* Anchor to the right */
+    width: 100%;
+    /* Cover the container */
+    height: 100%;
+    background-image: url('/media/images/hero-image.jpg');
+    background-size: cover;
+    background-position: 82% 85%;
+
+    /* This creates a fade effect from left (transparent) to right (visible) */
+    /* This ensures the image doesn't muddy the text on the left */
+    mask-image: linear-gradient(to right, transparent 50%, black 50%);
+    -webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
+  }
+
+  .hero-content {
+    z-index: 1;
+    /* Ensure text is above the image */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* Distributes your text blocks */
+    max-width: 100%;
+    /* Keeps text from stretching into the image too far */
+  }
+
+  .top-div h1 {
+    background-color: var(--blue);
+    color: white;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 0 10px 10px 0;
+  }
+
+    .flex-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flex-box button {
+    /* Styling */
+    flex: 1;
+    font-size: large;
+    font-weight: 500;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+
+    #menu-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: end;
+    /* pushes items to the right */
+    justify-content: center;
+    height: 100%;
+  }
+}
 
 
 
@@ -383,9 +580,11 @@ input {
   justify-content: center;
   align-items: center;
 }
-.container > div {
+
+.container>div {
   border: 0px 2px;
-  border-radius: 5px;  padding: 1em;
+  border-radius: 5px;
+  padding: 1em;
   color: var(--text-color);
   padding: 15px;
 }
@@ -412,7 +611,8 @@ input {
   height: 200px;
   background-image: url("media/images/hero-image.jpg");
   background-size: cover;
-  position: relative;  /* Keeps the child text contained inside */
+  position: relative;
+  /* Keeps the child text contained inside */
   cursor: pointer;
 }
 
@@ -428,16 +628,17 @@ input {
 }
 
 .projects-section {
-  height:100vh;
+  height: 100vh;
   width: 100%;
 }
 
 .beyond-work-section {
-  height:100vh;
+  height: 100vh;
 }
 
 .bottom-section {
-  flex: 5; /* Takes up 2 units of space (making it 66% of the total) */
+  flex: 5;
+  /* Takes up 2 units of space (making it 66% of the total) */
 }
 
 #container-query {
@@ -446,8 +647,9 @@ input {
   grid-template-columns: repeat(10, 10fr);
   justify-items: center;
 }
+
 #query-message {
-  text-align:center;
+  text-align: center;
   padding: 20px 0px;
 }
 
@@ -460,6 +662,37 @@ input {
 
 #query-send {
   height: flex;
-    padding: 10px;
+  padding: 10px;
 
+}
+
+/* This targets the 'a' tag specifically to remove the blue/underline */
+#menu-container a {
+  text-decoration: none;
+  color: inherit; /* Takes the color from #menu-container or body */
+  display: block; /* Makes the whole area clickable, not just the text */
+}
+
+/* This targets all h1s inside the menu to ensure they look consistent */
+#menu-container h1 {
+  /* This ensures the background highlight spans a good portion of the screen */
+  padding: 0.5rem 2rem; 
+  transition: all 0.3s ease; /* Makes the fade-in feel professional */
+  width: fit-content; /* Only highlights the area near the text */
+  text-align: right;
+}
+
+/* Optional: Subtle hover effect so the user knows it's interactive */
+#menu-container h1:hover {
+  color: var(--white); /* Keeps text white */
+  
+  /* Gradient starts at the right (blue) and fades to transparent on the left */
+  background: linear-gradient(to left, var(--blue) 40%, transparent 100%);
+  
+  /* Adds a nice rounded edge to the right side if you like that look */
+  border-radius: 5px 0 0 5px; 
+  
+  /* Slight movement to the left on hover for extra "pop" */
+  padding-right: 3rem; 
+  padding-left: 15rem;
 }

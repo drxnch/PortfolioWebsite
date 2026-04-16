@@ -1,7 +1,17 @@
-// 1. Select the main container once
+// 1. Constants & config
 const container = document.getElementById('portfolio-container');
 const featured_container = document.getElementById('featured-projects-container');
 const beyondWorkContainer = document.getElementById('beyond-work-container');
+const heroSection = document.getElementById('hero-section');
+const colorMap = {
+    'Software': 'var(--avery)',
+    'Firmware': 'var(--mango)',
+    'Hardware': 'var(--tangerine)',
+    'FPGA': 'var(--tango-pink)',
+    'all': 'var(--white)'
+};
+
+// 2. State
 let allProjects = [];
 let featuredProjects = [];
 let filteredProjects = [];
@@ -9,32 +19,24 @@ let beyondWorkInfo = [];
 let activeIndex = 0;
 let isAnimating = false;
 
-// 2. Load data and show everything to start
-async function init() {
-    try {
-        const response = await fetch('./data/projects.json');
-        allProjects = await response.json();
-        const featured_response = await fetch('./data/featured_projects.json');
-        featuredProjects = await featured_response.json();
-        const beyondWorkResponse = await fetch('./data/beyond_work.json');
-        beyondWorkInfo = await beyondWorkResponse.json();
-        
-        renderFeaturedProjects();
-        renderProjects('all');
-        renderBeyondWorkCards();
-    } catch (error) {
-        console.error('Error loading JSON:', error);
-    }
+// 3. Functions (pure logic, no DOM stuff)
+
+function getWrappedIndex(index) {
+    const len = filteredProjects.length;
+    return ((index % len) + len) % len;
 }
 
-// 3. Color map
-const colorMap = {
-    'Software': 'var(--avery)',
-    'Firmware': 'var(--mango)',
-    'Hardware': 'var(--tangerine)',
-    'FPGA':     'var(--tango-pink)',
-    'all':      'var(--white)'
-};
+function navigate(direction, cardColor) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    activeIndex = getWrappedIndex(activeIndex + direction);
+    renderVisible(cardColor);
+
+    setTimeout(() => { isAnimating = false; }, 300);
+}
+
+// 4. DOM functions (reading/updating the page)
 
 function renderProjects(filterTag) {
     activeIndex = 0;
@@ -60,24 +62,19 @@ function renderProjects(filterTag) {
     document.getElementById('nextBtn').addEventListener('click', () => navigate(1, cardColor));
 }
 
-function getWrappedIndex(index) {
-    const len = filteredProjects.length;
-    return ((index % len) + len) % len;
-}
-
 function renderVisible(cardColor) {
     const track = document.getElementById('carouselTrack');
     if (!track) return;
 
     // Get left, center, right indices with wrapping
-    const leftIndex  = getWrappedIndex(activeIndex - 1);
+    const leftIndex = getWrappedIndex(activeIndex - 1);
     const centerIndex = getWrappedIndex(activeIndex);
     const rightIndex = getWrappedIndex(activeIndex + 1);
 
     const slots = [
-        { project: filteredProjects[leftIndex],   role: 'side' },
+        { project: filteredProjects[leftIndex], role: 'side' },
         { project: filteredProjects[centerIndex], role: 'center' },
-        { project: filteredProjects[rightIndex],  role: 'side' },
+        { project: filteredProjects[rightIndex], role: 'side' },
     ];
 
     track.innerHTML = slots.map(({ project, role }) => `
@@ -91,16 +88,6 @@ function renderVisible(cardColor) {
             </div>
         </div>
     `).join('');
-}
-
-function navigate(direction, cardColor) {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    activeIndex = getWrappedIndex(activeIndex + direction);
-    renderVisible(cardColor);
-
-    setTimeout(() => { isAnimating = false; }, 300);
 }
 
 function renderFeaturedProjects() {
@@ -118,7 +105,8 @@ function renderFeaturedProjects() {
 
 function renderBeyondWorkCards() {
     beyondWorkContainer.innerHTML = "";
-    beyondWorkInfo.forEach(hobby => {beyondWorkContainer.innerHTML += `
+    beyondWorkInfo.forEach(hobby => {
+        beyondWorkContainer.innerHTML += `
             
             <div class="card">
               <div class="card-text">
@@ -127,11 +115,57 @@ function renderBeyondWorkCards() {
             </div>
         `;
     });
-
-    
 }
 
-// 4. Event Listeners
+function renderHeroTop() {
+    if (window.innerWidth < 768) { // Mobile
+        heroSection.innerHTML = `
+        <div id="hero-container">
+        <div id="hero-top">
+            <div id="hero-title">Hi. I'm Deven</div>
+        </div>
+        <div id="hero-bottom">
+            <h1>I am a <b style="color: var(--blue)">Computer Engineer.</b></h1> <br/>
+            <h2>
+            That means that I like to solve problems and think outside of the box.
+            </h2> <br />
+            <h2>
+                This is a place for you to view any work I've done. <br />
+                <b style="color: var(--avery)">Enjoy!</b>
+            </h2>
+        </div>
+        <div id="hero-footer">Find out more below</div>
+        </div>
+    `;
+    } else { // Desktop
+        heroSection.innerHTML = `
+        <div class="hero-container">
+    <div class="hero-bg-image"></div>
+    
+    <div class="hero-content">
+            <h1 id="hero-title">Hi. I'm Deven</h1>
+        <div class="hero-bottom" style="padding:2rem; max-width:50%;">
+            <h1>I am a <b style="color: var(--blue)">Computer Engineer.</b></h1>
+            <br />
+            <h2>That means that I like to solve problems and think outside of the box.</h2> 
+            <br />
+            <h2>
+                This is a place for you to view any work I've done. <br />
+                <b style="color: var(--avery)">Enjoy!</b>
+            </h2>
+        </div>
+    </div>
+</div>
+      `;
+    }
+}
+
+// 5. Event handlers
+
+
+
+// 6. Event listeners
+
 document.getElementById("softwareProjectButton").addEventListener("click", () => renderProjects("Software"));
 document.getElementById("firmwareProjectButton").addEventListener("click", () => renderProjects("Firmware"));
 document.getElementById("hardwareProjectButton").addEventListener("click", () => renderProjects("Hardware"));
@@ -139,5 +173,24 @@ document.getElementById("fpgaProjectButton").addEventListener("click", () => ren
 document.querySelector(".menu-btn").addEventListener("click", () => {
     document.getElementById("menu-background").classList.toggle("hidden");
 });
+
+// 7. Init (runs on load)
+async function init() {
+    try {
+        const response = await fetch('./data/projects.json');
+        allProjects = await response.json();
+        const featured_response = await fetch('./data/featured_projects.json');
+        featuredProjects = await featured_response.json();
+        const beyondWorkResponse = await fetch('./data/beyond_work.json');
+        beyondWorkInfo = await beyondWorkResponse.json();
+
+        renderFeaturedProjects();
+        renderProjects('all');
+        renderBeyondWorkCards();
+        renderHeroTop();
+    } catch (error) {
+        console.error('Error loading JSON:', error);
+    }
+}
 
 init();
