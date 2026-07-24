@@ -16,6 +16,7 @@
     {
     "title": "EVolocity Energy Resource Monitor",
     "year": "2025",
+    "image": "../media/images/20231027_122052.jpg",
     "description": "Developed a device to monitor voltage, current, and power from a standard power outlet. Displayed on a website using API integration, with offline support. Simulated analog circuitry in LTSpice and built a custom PCB.",
     "tech": ["LTSpice", "PCB Design", "Firmware", "API"],
     "tag": ["Electronics", "Hardware"]

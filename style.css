@@ -71,40 +71,63 @@
 
 /* Elements
  ----------------------------------------------------- */
-
-h2 {
+@media (min-width: 400px) { /* Mobile - Elements */
+  h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  h2 {
   font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+  h3 {
+    font-size: clamp(1.2rem, 5vw, 2.5rem);
+  }
+  p {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  br {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    width: 100%;
+    overflow-x: hidden;
+  }
+  b {
+    font-weight: 700;
+  }
 }
-
-h3 {
-  font-size: clamp(1.2rem, 5vw, 2.5rem);
-}
-
-p {
-  font-size: clamp(1rem, 5vw, 2rem);
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  width: 100%;
-  overflow-x: hidden;
-}
-
-b {
-  font-weight: 700;
+@media (min-width:1024px) { /* Desktop - Elements */
+  h1 {
+    font-size: clamp(3rem, 5vw, 6rem);
+  }
+  h2 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+  h3 {
+    font-size: clamp(1.2rem, 5vw, 2.5rem);
+  }
+  p {
+    font-size: clamp(1rem, 5vw, 2rem);
+  }
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 /* Hero Section
 ----------------------------------------------------- */
 
-@media (min-width: 400px) {
-  /* Mobile */
+@media (min-width: 360px) { /* Mobile - Hero Section */
 
-  h1 {
-    font-size: clamp(1.8rem, 5vw, 4rem);
+  #hero-section-div {
+    height: 100dvh;
+    display:flex;    
+    flex-direction: column;
   }
-
   #hero-container {
     position: relative;
     height: 100vh;
@@ -114,31 +137,194 @@ b {
     align-items: stretch;
   }
 
+  #hero-title-div {
+    flex:8;
+    position: relative;
+  }
+  #hero-title-div::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    /* Pushes the image behind the text */
+
+    background-image: url("media/images/hero-image.jpg");
+    background-size: 220%;
+    background-position: 100% 85%;
+    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
+    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
+  }
+
   #hero-title {
-    padding: clamp(0.1rem, 5vw, 1rem);
-    width: 60%;
+    padding: clamp(0.05rem, 5vw, 0.85rem);
+    width: 80%;
     display: flex;
-    flex: 1;
     /* Takes up 1 unit of space */
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     background-color: var(--blue);
     align-items: center;
     justify-content: center;
-    /* Will probably change*/
     color: var(--white);
-    font-weight: bold;
-    margin-top: 2.5rem;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight:600;
+    margin-top: 2rem;
+  }
+
+  .hero-text-container-div {
+    flex:10;
+    display:flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    width:90%;
+  }
+  
+  #hero-top {
+    flex:1;
+    display:flex;
+    align-items: center;
+  }
+
+  #hero-bottom {
+    flex: 2;
+    align-items: center;
+  }
+
+  .hero-footer-div {
+    flex:1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:var(--dark-grey);
+  }
+
+  #hero-footer {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) { /* Desktop - Hero Section*/
+  #hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #hero-title {
+    padding: clamp(1rem, 5vw, 5rem);
+    width: 55%;
+    display: flex;
+    flex: 1;
+    font-size: clamp(3rem, 5vw, 6rem);
+    /* Takes up 1 unit of space */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--blue);
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 5.5rem;
   }
 
   #hero-top {
     height: 45%;
   }
 
+  #hero-bottom {
+    height: 50%;
+    margin-left: 1rem;
+    width: calc(100% - 1rem);
+    /* Subtract the margin from the width */
+  }
+
+  #hero-footer {
+    height: 5%;
+    text-align: center;
+  }
+
+  /* This creates the image layer */
+  #hero-title-div::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: -1;
+    /* Pushes the image behind the text */
+
+    background-image: url("../media/images/hero-image.jpg");
+    background-size: 300%;
+    background-position: 82% 85%;
+    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
+    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
+  }
+  #hero-text {
+    display: flex;
+    flex-direction: column;
+    /* Stacks children vertically */
+    height: 100%;
+    max-width: 50%;
+    text-align: left;
+    color: var(--white);
+    /* Ensure it stays on the left */
+    float: left;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    z-index: -1;
+    /* Keep it behind everything */
+    top: 0;
+    right: 0;
+    /* Anchor to the right */
+    width: 100%;
+    /* Cover the container */
+    height: 100%;
+    background-image: url('/media/images/hero-image.jpg');
+    background-size: cover;
+    background-position: 82% 85%;
+
+    /* This creates a fade effect from left (transparent) to right (visible) */
+    /* This ensures the image doesn't muddy the text on the left */
+    mask-image: linear-gradient(to right, transparent 50%, black 50%);
+    -webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
+  }
+
+  .hero-content {
+    z-index: 1;
+    /* Ensure text is above the image */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* Distributes your text blocks */
+    max-width: 100%;
+    /* Keeps text from stretching into the image too far */
+  }
+
+  .top-div h1 {
+    background-color: var(--blue);
+    color: white;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
   /* Featured Projects
  ----------------------------------------------------- */
+@media (min-width: 400px) {
+}
+@media (min-width: 1024px) {} /* Desktop */
 
-  #featured-projects-container {
+#featured-projects-container {
     height: 75vh;
     background-color: var(--dark-grey);
     justify-content: center;
@@ -152,8 +338,48 @@ b {
     flex-shrink: 0;
   }
 
+.featured-card-container {
+  display:flex;
+  flex-direction: column;
+  width: 35dvh;
+  height: 35dvh;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  marg
+    :2rem;
+}
+
+.featured-card-image {
+  content:"";
+  flex:1;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+.featured-card-text {
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  background-color: var(--blue);
+  color:white;
+}
+
   /* All Projects
  ----------------------------------------------------- */
+ card-container {
+  display:flex;
+  flex-direction: column;
+  width: 35dvh;
+  height: 35dvh;
+  background-size: cover;
+  position: relative;
+  /* Keeps the child text contained inside */
+  cursor: pointer;
+}
+
+ @media (min-width: 400px) {
   #all-projects-container {
     height: 100vh;
     background-color: var(--white);
@@ -230,17 +456,25 @@ b {
     color: var(--white);
     z-index: 3;
   }
+}
+
+@media (min-width: 1024px) {} /* Desktop */
 
   /* Beyond Work
  ----------------------------------------------------- */
+ @media (min-width: 400px) { /* Mobile */
   #beyond-work-container {
     padding-top: 4rem;
     justify-content: center;
     flex-wrap: nowrap;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow-x: auto;
   }
+}
+
+@media (min-width: 1024px) {} /* Desktop */
+
 
   /* Queries
  ----------------------------------------------------- */
@@ -248,10 +482,11 @@ b {
 
   /* Menu
  ----------------------------------------------------- */
+ @media (min-width: 400px) { /* Mobile */
   .menu-btn {
     position: fixed;
-    bottom: 2rem;
-    left: 50%;
+    top: 2rem;
+    right: 5rem;
     transform: translateX(-50%);
     z-index: 100;
     width: 3rem;
@@ -286,210 +521,14 @@ b {
     justify-content: center;
     height: 100%;
   }
-
-  #hero-bottom {
-    height: 50%;
-    margin-left: 1rem;
-    width: calc(100% - 1rem);
-    /* Subtract the margin from the width */
-  }
-
-  #hero-footer {
-    height: 5%;
-    text-align: center;
-  }
-
-  /* This creates the image layer */
-  #hero-top::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    z-index: -1;
-    /* Pushes the image behind the text */
-
-    background-image: url("media/images/hero-image.jpg");
-    background-size: 300%;
-    background-position: 82% 85%;
-    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
-    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
-  }
-
-  #hero-text {
-    display: flex;
-    flex-direction: column;
-    /* Stacks children vertically */
-    height: 100%;
-    max-width: 50%;
-    text-align: left;
-    color: var(--white);
-    /* Ensure it stays on the left */
-    float: left;
-  }
-
-  .hero-bg-image {
-    position: absolute;
-    z-index: -1;
-    /* Keep it behind everything */
-    top: 0;
-    right: 0;
-    /* Anchor to the right */
-    width: 100%;
-    /* Cover the container */
-    height: 100%;
-    background-image: url('/media/images/hero-image.jpg');
-    background-size: cover;
-    background-position: 82% 85%;
-
-    /* This creates a fade effect from left (transparent) to right (visible) */
-    /* This ensures the image doesn't muddy the text on the left */
-    mask-image: linear-gradient(to right, transparent 50%, black 50%);
-    -webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
-  }
-
-  .hero-content {
-    z-index: 1;
-    /* Ensure text is above the image */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    /* Distributes your text blocks */
-    max-width: 100%;
-    /* Keeps text from stretching into the image too far */
-  }
-
-  .top-div h1 {
-    background-color: var(--blue);
-    color: white;
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 0 10px 10px 0;
-  }
 }
 
-@media (min-width: 1024px) {
-  /* Desktop */
-
-  h1 {
-    font-size: clamp(3rem, 5vw, 6rem);
-  }
+@media (min-width: 1024px) {} /* Desktop */
 
 
-  /* Hero Section - Desktop*/
-  #hero-container {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-  }
 
-  #hero-title {
-    padding: clamp(1rem, 5vw, 5rem);
-    width: 55%;
-    display: flex;
-    flex: 1;
-    font-size: clamp(3rem, 5vw, 6rem);
-    /* Takes up 1 unit of space */
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: var(--blue);
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: 600;
-    margin-top: 5.5rem;
-  }
-
-  #hero-top {
-    height: 45%;
-  }
-
-  #hero-bottom {
-    height: 50%;
-    margin-left: 1rem;
-    width: calc(100% - 1rem);
-    /* Subtract the margin from the width */
-  }
-
-  #hero-footer {
-    height: 5%;
-    text-align: center;
-  }
-
-  /* This creates the image layer */
-  #hero-top::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    z-index: -1;
-    /* Pushes the image behind the text */
-
-    background-image: url("media/images/hero-image.jpg");
-    background-size: 300%;
-    background-position: 82% 85%;
-    /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
-    /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
-  }
-
-  #hero-text {
-    display: flex;
-    flex-direction: column;
-    /* Stacks children vertically */
-    height: 100%;
-    max-width: 50%;
-    text-align: left;
-    color: var(--white);
-    /* Ensure it stays on the left */
-    float: left;
-  }
-
-  .hero-bg-image {
-    position: absolute;
-    z-index: -1;
-    /* Keep it behind everything */
-    top: 0;
-    right: 0;
-    /* Anchor to the right */
-    width: 100%;
-    /* Cover the container */
-    height: 100%;
-    background-image: url('/media/images/hero-image.jpg');
-    background-size: cover;
-    background-position: 82% 85%;
-
-    /* This creates a fade effect from left (transparent) to right (visible) */
-    /* This ensures the image doesn't muddy the text on the left */
-    mask-image: linear-gradient(to right, transparent 50%, black 50%);
-    -webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
-  }
-
-  .hero-content {
-    z-index: 1;
-    /* Ensure text is above the image */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    /* Distributes your text blocks */
-    max-width: 100%;
-    /* Keeps text from stretching into the image too far */
-  }
-
-  .top-div h1 {
-    background-color: var(--blue);
-    color: white;
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 0 10px 10px 0;
-  }
+/* Other --
+-----------------------------*/
 
     .flex-box {
     display: flex;
@@ -516,11 +555,16 @@ b {
     justify-content: center;
     height: 100%;
   }
+
+
+
+/* General */
+
+.center-content {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
-
-
 
 
 
@@ -594,26 +638,6 @@ input {
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
   padding: 15px;
-}
-
-.container-card {
-  margin: 1.5rem;
-  transition: background-color 250ms ease;
-  padding: 15px;
-}
-
-.container-card:hover {
-  background-color: var(--mango);
-}
-
-.card {
-  width: 200px;
-  height: 200px;
-  background-image: url("media/images/hero-image.jpg");
-  background-size: cover;
-  position: relative;
-  /* Keeps the child text contained inside */
-  cursor: pointer;
 }
 
 /* When the CARD is hovered, change the TEXT */
