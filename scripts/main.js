@@ -2,7 +2,7 @@
 const container = document.getElementById('portfolio-container');
 const featured_container = document.getElementById('featured-projects-container');
 const beyondWorkContainer = document.getElementById('beyond-work-container');
-const heroSection = document.getElementById('hero-section');
+const heroSection = document.getElementById('hero-section-div');
 const colorMap = {
     'Software': 'var(--avery)',
     'Firmware': 'var(--mango)',
@@ -17,6 +17,7 @@ let featuredProjects = [];
 let filteredProjects = [];
 let beyondWorkInfo = [];
 let activeIndex = 0;
+let activeFeaturedProjectIndex = 0;
 let isAnimating = false;
 
 // 3. Functions (pure logic, no DOM stuff)
@@ -49,7 +50,7 @@ function renderProjects(filterTag) {
 
     // Build the carousel structure
     container.innerHTML = `
-        <div class="carousel-wrapper">
+        <div class="card-container">
             <button class="carousel-btn left-btn" id="prevBtn">&#8592;</button>
             <div class="carousel-track" id="carouselTrack"></div>
             <button class="carousel-btn right-btn" id="nextBtn">&#8594;</button>
@@ -60,6 +61,19 @@ function renderProjects(filterTag) {
 
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1, cardColor));
     document.getElementById('nextBtn').addEventListener('click', () => navigate(1, cardColor));
+}
+
+function renderAllProjects() {
+    container.innerHTML = "";
+    allProjects.forEach(project => {
+        container.innerHTML += `
+            <div class="featured-card-container">
+                <div class="featured-card-image" style="background-image: url('${project.image}')"></div>
+                <div class="featured-card-text">
+                    <h3>${project.title}</h3>
+                </div>
+            </div> `;
+    });
 }
 
 function renderVisible(cardColor) {
@@ -94,12 +108,12 @@ function renderFeaturedProjects() {
     featured_container.innerHTML = "";
     featuredProjects.forEach(project => {
         featured_container.innerHTML += `
-            <div class="card">
-              <div class="card-text">
-                <h3>${project.title}</h3>
-              </div>
-            </div>
-        `;
+            <div class="featured-card-container">
+                <div class="featured-card-image" style="background-image: url('${project.image}')"></div>
+                <div class="featured-card-text">
+                    <h3>${project.title}</h3>
+                </div>
+            </div> `;
     });
 }
 
@@ -108,33 +122,35 @@ function renderBeyondWorkCards() {
     beyondWorkInfo.forEach(hobby => {
         beyondWorkContainer.innerHTML += `
             
-            <div class="card">
-              <div class="card-text">
-                <h3>${hobby.title}</h3>
-              </div>
+            <div class="featured-card-container">
+                <div class="featured-card-image" style="background-image: url('${hobby.image}')"></div>
             </div>
+            <h2>${hobby.title}</h2>
+            <h3>${hobby.description}</h3>
         `;
     });
 }
 
-function renderHeroTop() {
+function renderHeroSection() {
     if (window.innerWidth < 768) { // Mobile
         heroSection.innerHTML = `
-        <div id="hero-container">
-        <div id="hero-top">
-            <div id="hero-title">Hi. I'm Deven</div>
+        <div id="hero-title-div"><div id="hero-title">Hi. I'm Deven.</div></div>
+        <div class="hero-image-div"></div>
+        <div class="hero-text-container-div">
+            <div id="hero-top">
+                <h1>I am a <b style="color: var(--blue); font-weight:bold;">Computer Engineer.</b></h1>
+            </div>
+            <div id="hero-bottom"> 
+                <div>
+                <h2>That means that I like to solve problems, and think outside of the box.</h2><br />
+                <h2>
+                    This is a place for you to view any work I've done.
+                <b style="color: var(--avery); font-weight:bold;">Enjoy!</b>
+                </h2> 
+                </div>
+            </div>
         </div>
-        <div id="hero-bottom">
-            <h1>I am a <b style="color: var(--blue)">Computer Engineer.</b></h1> <br/>
-            <h2>
-            That means that I like to solve problems and think outside of the box.
-            </h2> <br />
-            <h2>
-                This is a place for you to view any work I've done. <br />
-                <b style="color: var(--avery)">Enjoy!</b>
-            </h2>
-        </div>
-        <div id="hero-footer">Find out more below</div>
+        <div class="hero-footer-div">Find out more below!</div>
         </div>
     `;
     } else { // Desktop
@@ -159,7 +175,6 @@ function renderHeroTop() {
       `;
     }
 }
-
 // 5. Event handlers
 
 
@@ -185,9 +200,9 @@ async function init() {
         beyondWorkInfo = await beyondWorkResponse.json();
 
         renderFeaturedProjects();
-        renderProjects('all');
+        renderAllProjects();
         renderBeyondWorkCards();
-        renderHeroTop();
+        renderHeroSection();
     } catch (error) {
         console.error('Error loading JSON:', error);
     }
