@@ -50,9 +50,9 @@
   --blue: hsl(191, 38%, 50%);
   --white: hsl(0, 0%, 100%);
   --light-grey: hsl(0, 0%, 80%);
-  --dark-grey: hsl(0, 0%, 20%);
   --grey: hsl(0, 0%, 50%);
-  --black: hsl(0, 0%, 10%);
+  --dark-grey: hsl(0, 0%, 30%);
+  --black: hsl(0, 0%, 20%);
 }
 
 /* Light Mode */
@@ -71,18 +71,18 @@
 
 /* Elements
  ----------------------------------------------------- */
-@media (min-width: 400px) { /* Mobile - Elements */
+@media (min-width: 200px /* Elements - Mobile */) {
   h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3rem);
   }
   h2 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   }
   h3 {
-    font-size: clamp(1.2rem, 5vw, 2.5rem);
+    font-size: clamp(1.2rem, 5vw, 2rem);
   }
   p {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1rem, 5vw, 1.5rem);
   }
   br {
     font-size: clamp(1.5rem, 5vw, 2.5rem);
@@ -97,18 +97,18 @@
     font-weight: 700;
   }
 }
-@media (min-width:1024px) { /* Desktop - Elements */
+@media (min-width:768px /* Elements - Desktop */) {
   h1 {
-    font-size: clamp(3rem, 5vw, 6rem);
+    font-size: clamp(3rem, 5vw, 4rem);
   }
   h2 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   }
   h3 {
-    font-size: clamp(1.2rem, 5vw, 2.5rem);
+    font-size: clamp(1.2rem, 5vw, 2rem);
   }
   p {
-    font-size: clamp(1rem, 5vw, 2rem);
+    font-size: clamp(1rem, 5vw, 1.5rem);
   }
   body {
     background-color: var(--background-color);
@@ -121,14 +121,13 @@
 /* Hero Section
 ----------------------------------------------------- */
 
-@media (min-width: 360px) { /* Mobile - Hero Section */
-
   #hero-section-div {
-    height: 100dvh;
+    min-height: 100vh;
     display:flex;    
-    flex-direction: column;
   }
-  #hero-container {
+
+@media (min-width: 200px /* Mobile - Hero Section */) {
+  .hero-container {
     position: relative;
     height: 100vh;
     width: 100%;
@@ -153,7 +152,7 @@
 
     background-image: url("media/images/hero-image.jpg");
     background-size: 220%;
-    background-position: 100% 85%;
+    background-position: 100% 60%;
     /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
     /* mask-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(0,0,0,.5) 70%); */
   }
@@ -171,7 +170,6 @@
     color: var(--white);
     font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight:600;
-    margin-top: 2rem;
   }
 
   .hero-text-container-div {
@@ -206,23 +204,17 @@
   }
 }
 
-@media (min-width: 1024px) { /* Desktop - Hero Section*/
-  #hero-container {
-    position: relative;
-    height: 100vh;
+@media (min-width: 768px /* Desktop - Hero Section*/) {
+  .hero-container {
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
   }
 
   #hero-title {
-    padding: clamp(1rem, 5vw, 5rem);
-    width: 55%;
-    display: flex;
-    flex: 1;
-    font-size: clamp(3rem, 5vw, 6rem);
-    /* Takes up 1 unit of space */
+    padding: 1.5rem 4.5rem;
+    width: 95%;
+    font-size: clamp(6rem, 4vw, 10rem);
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     background-color: var(--blue);
@@ -230,18 +222,17 @@
     justify-content: center;
     color: var(--white);
     font-weight: 600;
-    margin-top: 5.5rem;
+    min-height: 0;
+    margin-bottom: 3rem;
+    margin-left: -3rem;
   }
 
   #hero-top {
     height: 45%;
   }
 
-  #hero-bottom {
-    height: 50%;
-    margin-left: 1rem;
-    width: calc(100% - 1rem);
-    /* Subtract the margin from the width */
+  .hero-bottom {
+    max-width: clamp(70%,5vw,55%);
   }
 
   #hero-footer {
@@ -259,7 +250,7 @@
     z-index: -1;
     /* Pushes the image behind the text */
 
-    background-image: url("../media/images/hero-image.jpg");
+    background-image: url("./media/images/hero-image.jpg");
     background-size: 300%;
     background-position: 82% 85%;
     /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
@@ -285,11 +276,10 @@
     right: 0;
     /* Anchor to the right */
     width: 100%;
-    /* Cover the container */
     height: 100%;
     background-image: url('../media/images/hero-image.jpg');
-    background-size: cover;
-    background-position: 82% 85%;
+    background-size: 125%;
+    background-position: 70% 90%;
 
     /* This creates a fade effect from left (transparent) to right (visible) */
     /* This ensures the image doesn't muddy the text on the left */
@@ -303,8 +293,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    /* Distributes your text blocks */
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
     max-width: 100%;
     /* Keeps text from stretching into the image too far */
   }
@@ -313,7 +303,7 @@
     background-color: var(--blue);
     color: white;
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     border-radius: 0 10px 10px 0;
   }
 }
@@ -322,7 +312,7 @@
  ----------------------------------------------------- */
 @media (min-width: 400px) {
 }
-@media (min-width: 1024px) {} /* Desktop */
+@media (min-width: 768px) {} /* Desktop */
 
 #featured-projects-container {
     height: 75vh;
@@ -346,13 +336,12 @@
   background-size: cover;
   position: relative;
   cursor: pointer;
-  marg
-    :2rem;
+  margin: 2rem;
 }
 
 .featured-card-image {
   content:"";
-  flex:1;
+  flex:4;
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -364,6 +353,11 @@
   align-items:center;
   background-color: var(--blue);
   color:white;
+}
+
+.featured-card-tag {
+  display:flex;
+  flex:1;
 }
 
   /* All Projects
