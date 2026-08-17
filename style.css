@@ -250,7 +250,7 @@
     z-index: -1;
     /* Pushes the image behind the text */
 
-    background-image: url("./media/images/hero-image.jpg");
+    background-image: src("./media/images/hero-image.jpg");
     background-size: 300%;
     background-position: 82% 85%;
     /* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 3%, rgba(0,0,0,.5) 70%); */
